@@ -43,7 +43,7 @@ public class ScriptActionQuickCraft extends ScriptAction {
 			recipeName = provider.expand(macro, params[0], false);
 		}
 		if (params.length > 1) {
-			String sendClickStr = provider.expand(macro, params[2], false).trim();
+			String sendClickStr = provider.expand(macro, params[1], false).trim();
 			sendClick = ("1".equals(sendClickStr)) || ("true".equalsIgnoreCase(sendClickStr));
 		}
 
@@ -69,6 +69,7 @@ public class ScriptActionQuickCraft extends ScriptAction {
 			GuiInventory gcinv = (GuiInventory) gc;
 			gcrecipebook = gcinv.func_194310_f();
 		} else {
+			Game.addChatMessage("Open crafting screen before running QuickCraft");
 			// handle case where we don't either of those crafting windows open.
 			return retVal;
 		}
