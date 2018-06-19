@@ -32,7 +32,7 @@ public class ScriptActionQuickCraft extends ScriptAction {
 
 	public IReturnValue execute(IScriptActionProvider provider, IMacro macro, IMacroAction instance, String rawParams,
 			String[] params) {
-		ReturnValue retVal = new ReturnValue(-1);
+		ReturnValue retVal = new ReturnValue(false);
 		String recipeName = "";
 		Boolean sendClick = false;
 		if (params.length == 0) {
@@ -92,6 +92,6 @@ public class ScriptActionQuickCraft extends ScriptAction {
 		if (sendClick)
 			this.slotHelper.containerSlotClick(0, 0, true);
 
-		return retVal;
+		return new ReturnValue(true);
 	}
 }
