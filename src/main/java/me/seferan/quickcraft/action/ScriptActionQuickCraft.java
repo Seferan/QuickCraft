@@ -38,38 +38,36 @@ public class ScriptActionQuickCraft extends ScriptAction {
 			String recipeName = provider.expand(macro, params[0], false);
 			ResourceLocation rs = new ResourceLocation(recipeName);
 			IRecipe recipe = CraftingManager.getRecipe(rs);
-			if(recipe== null) {
+			if (recipe == null) {
 				// handle case where invalid recipe is passed in.
 				Log.info("Invalid Recipe");
 				return retVal;
 			}
-			
+
 			GuiContainer gc = this.slotHelper.getGuiContainer();
-		    if(gc != null && gc instanceof GuiCrafting) {
-		    	GuiCrafting gccrafting = (GuiCrafting)gc;
-		    	Container inventorySlots = gccrafting.inventorySlots;		    	
-			    GuiRecipeBook gcrecipebook = gccrafting.func_194310_f();
-			    			   
-		    }
-			else if (gc != null && gc instanceof GuiInventory) {
-				if(!recipe.canFit(2, 2)) {
+			if (gc != null && gc instanceof GuiCrafting) {
+				GuiCrafting gccrafting = (GuiCrafting) gc;
+				Container inventorySlots = gccrafting.inventorySlots;
+				GuiRecipeBook gcrecipebook = gccrafting.func_194310_f();
+
+			} else if (gc != null && gc instanceof GuiInventory) {
+				if (!recipe.canFit(2, 2)) {
 					// handle case where recipe requires 3x3 grid.
 					Log.info("Crafting Grid too small for recipe!");
 					return retVal;
 				}
-				GuiInventory gcinv = (GuiInventory)gc;
+				GuiInventory gcinv = (GuiInventory) gc;
 				GuiRecipeBook gcrecipebook = gcinv.func_194310_f();
-			}
-			else {
-		    	// handle case where we don't either of those crafting windows open.
+			} else {
+				// handle case where we don't either of those crafting windows open.
 				Log.info("Invalid Crafting Window");
-		    	return retVal;
-		    }
-		    
-		    // Perform actual call to "click" on the recipe in the recipe book.
-		    // borrowed from mouseClicked of GuiRecipeBook.class
-		    this.mc.playerController.func_194338_a(this.mc.player.openContainer.windowId, recipe, true, this.mc.player);
+				return retVal;
+			}
+
+			// Perform actual call to "click" on the recipe in the recipe book.
+			// borrowed from mouseClicked of GuiRecipeBook.class
+			this.mc.playerController.func_194338_a(this.mc.player.openContainer.windowId, recipe, true, this.mc.player);
 		}
-	    return retVal;	
+		return retVal;
 	}
 }
