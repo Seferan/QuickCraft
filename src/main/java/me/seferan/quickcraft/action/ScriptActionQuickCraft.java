@@ -1,11 +1,6 @@
 package me.seferan.quickcraft.action;
 
-import java.lang.reflect.Field;
-
-import org.apache.commons.lang3.reflect.FieldUtils;
-
 import me.seferan.quickcraft.util.ModuleInfo;
-import net.eq2online.console.Log;
 import net.eq2online.macros.scripting.api.APIVersion;
 import net.eq2online.macros.scripting.api.IMacro;
 import net.eq2online.macros.scripting.api.IMacroAction;
