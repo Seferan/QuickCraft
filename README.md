@@ -1,4 +1,4 @@
-# pressbutton
+# QuickCraft
 Module for the Macro/Keybinding modulation for minecraft/liteloader
 
-Adds an pressbutton command
+Adds an QuickCraft command
